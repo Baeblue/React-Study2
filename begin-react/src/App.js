@@ -3,6 +3,7 @@ import Hello from './Hello'
 import Wrapper from './Wrapper'
 import Counter from './Counter'
 import InputSample from './InputSample'
+import UserList from './UserList'
 import './App.css'
 
 function App() {
@@ -13,8 +14,9 @@ function App() {
                 {/* isSpecial={true} === isSpecial */}
                 <Hello color="pink" />
             </Wrapper>
-            <Counter />
-            <InputSample />
+            <Counter /> <br />
+            <InputSample /> <br />
+            <UserList />
         </div>
     )
 }
