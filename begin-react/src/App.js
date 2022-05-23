@@ -40,9 +40,10 @@ function App() {
             username,
             email,
         }
-        // spread 연산자 사용
+        // 배열에 항목을 추가하는 방법 2가지
+        // 1. spread 연산자 사용
         // setUsers([...users, user])
-        // concat 함수 사용
+        // 2. concat 함수 사용
         setUsers(users.concat(user))
 
         setInputs({
