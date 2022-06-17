@@ -13,13 +13,13 @@ function App() {
         email: '',
     })
     const { username, email } = inputs
-    const onChange = (e) => {
+    const onChange = useCallback((e) => {
         const { name, value } = e.target
-        setInputs({
+        setInputs((inputs) => ({
             ...inputs,
             [name]: value,
-        })
-    }
+        }))
+    }, [])
     const [users, setUsers] = useState([
         {
             id: 1,
@@ -52,28 +52,22 @@ function App() {
         // 1. spread 연산자 사용
         // setUsers([...users, user])
         // 2. concat 함수 사용
-        setUsers(users.concat(user))
+        setUsers((users) => users.concat(user))
 
         setInputs({
             username: '',
             email: '',
         })
         nextId.current += 1
-    }, [users, username, email])
+    }, [username, email])
 
-    const onRemove = useCallback(
-        (id) => {
-            setUsers(users.filter((user) => user.id !== id))
-        },
-        [users],
-    )
+    const onRemove = useCallback((id) => {
+        setUsers((users) => users.filter((user) => user.id !== id))
+    }, [])
 
-    const onToggle = useCallback(
-        (id) => {
-            setUsers(users.map((user) => (user.id === id ? { ...user, active: !user.active } : user)))
-        },
-        [users],
-    )
+    const onToggle = useCallback((id) => {
+        setUsers((users) => users.map((user) => (user.id === id ? { ...user, active: !user.active } : user)))
+    }, [])
 
     const count = useMemo(() => countActiveUsers(users), [users])
 
